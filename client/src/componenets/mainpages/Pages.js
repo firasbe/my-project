@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import {Switch , Route} from 'react-router-dom'
 import Products from './products/Products'
 import DetailProduct from './detailProduct/DetailProduct'
@@ -6,8 +6,20 @@ import Login from './auth/Login'
 import Register from './auth/Register'
 import Cart from './cart/Cart'
 import NotFound from './utils/Not-found/NotFound'
+import CreateProduct from './createProduct/CreateProduct'
 
-function Pages() {
+import OrderHistory from './hitory/OrderHistory'
+import OrderDetails from './hitory/OrderDetails'
+
+import {GlobalState} from '../../GlobalState'
+
+
+
+
+ function Pages() {
+        const state = useContext(GlobalState)
+        const [isLogged] = state.userAPI.isLogged
+        const [isAdmin] = state.userAPI.isAdmin
 
 
 
@@ -23,7 +35,17 @@ function Pages() {
            <Route path="/cart" exact component={Cart}  />
            <Route path ="/dogshop" exact component={Products} />
 
-           <Route path="*" exact component={NotFound}  />
+           <Route path="/create_product" exact component={isAdmin ? CreateProduct : NotFound} />
+            <Route path="/edit_product/:id" exact component={isAdmin ? CreateProduct : NotFound} />
+
+
+           <Route path="/history" exact component={isLogged ? OrderHistory : NotFound} />
+            <Route path="/history/:id" exact component={isLogged ? OrderDetails : NotFound} />
+
+           <Route path="*" exact component={Products}  />
+
+           <Route path="" exact component={Products} />
+
           
 
 

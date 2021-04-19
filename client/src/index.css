@@ -46,7 +46,15 @@ button{
 @import url("./componenets/mainpages/detailProduct/DetailProduct.css");
 
 /*------------ cart----------*/
-@import url("./componenets/mainpages/cart/cart.css") ;
+@import url("./componenets/mainpages/cart/cart.css");
+
+/*--------------- History -------------------*/
+@import url("./componenets/mainpages/hitory/hitory.css");
+
+/* ------------------- Create Product -------------- */
+@import url("./componenets/mainpages/createProduct/createProduct.css");
+
+
 
 
 
